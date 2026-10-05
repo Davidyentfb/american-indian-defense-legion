@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>American Indian Defense Legion — Cybersecurity &amp; Incident Reporting</title>
+<meta name="description" content="The American Indian Defense Legion defends American Indian communities against cybercrime, financial fraud, and the misuse of Indigenous identity, knowledge, and art. Report incidents, access federal reporting channels, and engage defensive cybersecurity services.">
+<style>
+  :root{
+    --black:#0A0A0B; --panel:#131315; --panel2:#1A1A1D;
+    --gold:#C9A227; --gold-deep:#9A7B1C; --bronze:#B08D57;
+    --bone:#F5F1E6; --muted:#A9A49A; --line:rgba(201,162,39,.22);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--bone);font-family:var(--sans);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--gold);color:#0A0A0B}
+  a{color:var(--gold)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .25s}
+  header.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.5)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--bone)}
+  .brand svg{width:40px;height:40px;flex:none}
+  .brand .wordmark{font-family:var(--serif);font-size:17px;letter-spacing:.4px;line-height:1.2}
+  .brand .wordmark small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase}
+  nav.links{display:flex;gap:28px;align-items:center}
+  nav.links a{color:var(--bone);text-decoration:none;font-size:14.5px;letter-spacing:.4px;opacity:.85;transition:.2s}
+  nav.links a:hover{color:var(--gold);opacity:1}
+  .btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.3px;padding:13px 26px;border-radius:8px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:.2s}
+  .btn-gold{background:var(--gold);color:#0A0A0B}
+  .btn-gold:hover{background:#DBB73A;transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn-sm{padding:10px 18px;font-size:13.5px}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;color:var(--bone);padding:9px 13px;font-size:16px;cursor:pointer}
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:110px 0 90px;border-bottom:1px solid var(--line)}
+  .hero .shield-bg{position:absolute;right:-120px;top:-60px;width:560px;opacity:.07;pointer-events:none}
+  .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:3.5px;font-size:12.5px;font-weight:600;margin-bottom:18px}
+  h1{font-family:var(--serif);font-size:clamp(40px,6vw,68px);line-height:1.08;font-weight:600;max-width:16ch}
+  h1 .accent{color:var(--gold)}
+  .lede{font-size:19px;color:var(--muted);max-width:62ch;margin:22px 0 34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{margin-top:44px;display:flex;gap:36px;flex-wrap:wrap}
+  .hero-meta div b{display:block;font-family:var(--serif);font-size:26px;color:var(--gold)}
+  .hero-meta div span{font-size:13px;color:var(--muted);letter-spacing:.5px}
+  /* ---------- sections ---------- */
+  section{padding:84px 0}
+  section.alt{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-family:var(--serif);font-size:clamp(30px,4vw,44px);margin-bottom:14px;line-height:1.15}
+  h2 .accent{color:var(--gold)}
+  .sub{color:var(--muted);max-width:70ch;margin-bottom:44px;font-size:17px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:32px;transition:.25s}
+  .card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .card .icon{width:46px;height:46px;border-radius:11px;background:rgba(201,162,39,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .card .icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.8}
+  .card h3{font-family:var(--serif);font-size:21px;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15.5px}
+  .card .deliv{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--bronze)}
+  /* ---------- asset chips ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:14px;color:var(--bone);background:rgba(201,162,39,.06)}
+  .chip:hover{border-color:var(--gold)}
+  /* ---------- report portal ---------- */
+  .portal{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
+  .form-card{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:36px}
+  .form-card h3{font-family:var(--serif);font-size:24px;margin-bottom:6px}
+  .form-card .hint{color:var(--muted);font-size:14px;margin-bottom:26px}
+  label.flabel{display:block;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin:20px 0 8px;font-weight:600}
+  input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;background:#0E0E10;border:1px solid var(--line);border-radius:9px;color:var(--bone);padding:13px 15px;font-size:15.5px;font-family:var(--sans);transition:.2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.15)}
+  textarea{min-height:130px;resize:vertical}
+  .check{display:flex;gap:12px;align-items:flex-start;margin:12px 0;font-size:14.5px;color:var(--muted)}
+  .check input{width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex:none}
+  .side-stack{display:flex;flex-direction:column;gap:22px}
+  .steps{list-style:none;counter-reset:step}
+  .steps li{position:relative;padding:0 0 26px 52px;color:var(--muted);font-size:15px}
+  .steps li:last-child{padding-bottom:0}
+  .steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px}
+  .steps li b{color:var(--bone);display:block;font-size:15.5px;margin-bottom:2px}
+  .report-out{display:none;margin-top:26px;border:1px solid var(--gold);border-radius:12px;padding:24px;background:rgba(201,162,39,.05)}
+  .report-out.show{display:block}
+  .report-out h4{font-family:var(--serif);color:var(--gold);font-size:19px;margin-bottom:10px}
+  .report-out pre{white-space:pre-wrap;font-size:13.5px;color:var(--bone);background:#0C0C0D;border:1px solid var(--line);border-radius:8px;padding:16px;max-height:320px;overflow:auto;margin:12px 0}
+  .report-out .row{display:flex;gap:10px;flex-wrap:wrap}
+  .field-err{color:#E0685C;font-size:13px;margin-top:6px;display:none}
+  /* ---------- channels table ---------- */
+  .chan{width:100%;border-collapse:collapse;font-size:15px}
+  .chan th{text-align:left;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);padding:14px 16px;border-bottom:1px solid var(--line)}
+  .chan td{padding:16px;border-bottom:1px solid rgba(201,162,39,.1);vertical-align:top;color:var(--muted)}
+  .chan td:first-child{color:var(--bone);font-weight:600;white-space:nowrap}
+  .chan tr:hover td{background:rgba(201,162,39,.04)}
+  .verified{display:inline-block;font-size:11px;letter-spacing:1px;color:#0A0A0B;background:var(--gold);border-radius:4px;padding:2px 8px;margin-left:8px;font-weight:700;vertical-align:middle}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}
+  /* ---------- accordions ---------- */
+  details.acc{border:1px solid var(--line);border-radius:12px;background:var(--panel2);margin-bottom:14px;overflow:hidden}
+  details.acc summary{cursor:pointer;padding:20px 24px;font-family:var(--serif);font-size:18px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.acc summary::-webkit-details-marker{display:none}
+  details.acc summary::after{content:"+";color:var(--gold);font-size:24px;font-family:var(--sans)}
+  details.acc[open] summary::after{content:"–"}
+  details.acc .body{padding:0 24px 24px;color:var(--muted);font-size:15.5px}
+  details.acc .body ul{margin:10px 0 0 20px}
+  details.acc .body li{margin-bottom:8px}
+  /* ---------- about / contact ---------- */
+  .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
+  .principle{border-left:2px solid var(--gold);padding:6px 0 6px 20px}
+  .principle b{display:block;font-size:16px;margin-bottom:4px}
+  .principle span{color:var(--muted);font-size:14.5px}
+  .contact-band{text-align:center;padding:70px 0}
+  .contact-band h2{margin-bottom:12px}
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:52px 0 40px;color:var(--muted);font-size:13.5px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:36px}
+  .foot-grid h5{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+  .foot-grid a{color:var(--muted);text-decoration:none;display:block;margin-bottom:8px}
+  .foot-grid a:hover{color:var(--gold)}
+  .disclaimer{border-top:1px solid var(--line);padding-top:26px;font-size:12.5px;line-height:1.7;color:#7E7A70}
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .grid3,.grid2,.portal,.principles,.foot-grid{grid-template-columns:1fr}
+    nav.links{display:none;position:absolute;top:72px;left:0;right:0;background:#0E0E10;flex-direction:column;padding:20px 24px 28px;gap:18px;border-bottom:1px solid var(--line);align-items:flex-start}
+    nav.links.open{display:flex}
+    .menu-toggle{display:block}
+    .hero{padding:70px 0 60px}
+    section{padding:60px 0}
+  }
+</style>
+</head>
+<body>
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="#home" aria-label="American Indian Defense Legion — home">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 3 41 10v13c0 10.5-7.2 18.4-17 22C14.2 41.4 7 33.5 7 23V10L24 3z" fill="none" stroke="#C9A227" stroke-width="2.6"/>
+        <path d="M24 12l2.6 5.6 6 .7-4.4 4.1 1.1 5.9-5.3-3-5.3 3 1.1-5.9-4.4-4.1 6-.7L24 12z" fill="#C9A227"/>
+        <path d="M14 34.5h20" stroke="#C9A227" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+      </svg>
+      <span class="wordmark">American Indian Defense Legion<small>Cybersecurity &amp; Incident Reporting</small></span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">☰</button>
+    <nav class="links" id="nav-links" aria-label="Primary">
+      <a href="#home">Home</a>
+      <a href="#report">Report an Incident</a>
+      <a href="#services">Services</a>
+      <a href="#resources">Resources</a>
+      <a href="#about">About</a>
+      <a href="#report" class="btn btn-gold btn-sm">Report an Incident</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <svg class="shield-bg" viewBox="0 0 48 48" aria-hidden="true">
+    <path d="M24 3 41 10v13c0 10.5-7.2 18.4-17 22C14.2 41.4 7 33.5 7 23V10L24 3z" fill="none" stroke="#C9A227" stroke-width="1.4"/>
+    <path d="M24 12l2.6 5.6 6 .7-4.4 4.1 1.1 5.9-5.3-3-5.3 3 1.1-5.9-4.4-4.1 6-.7L24 12z" fill="#C9A227"/>
+  </svg>
+  <div class="wrap">
+    <p class="eyebrow rv">Cybersecurity · Incident Reporting · Cultural Asset Defense</p>
+    <h1 class="rv">Defending American Indian communities in the <span class="accent">digital age.</span></h1>
+    <p class="lede rv">The American Indian Defense Legion is a cybersecurity and incident-reporting company serving American Indian communities — documenting crimes and financial crimes, defending tribal organizations against cyber threats, and protecting Indigenous identity, knowledge, and art from misuse and exploitation.</p>
+    <div class="hero-cta rv">
+      <a href="#report" class="btn btn-gold">Report an Incident</a>
+      <a href="#services" class="btn btn-ghost">Explore Services</a>
+    </div>
+    <div class="hero-meta rv">
+      <div><b>6</b><span>INCIDENT CATEGORIES</span></div>
+      <div><b>11</b><span>ASSET CLASSES PROTECTED</span></div>
+      <div><b>100%</b><span>DEFENSE-FIRST POSTURE</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILLARS ================= -->
+<section id="pillars">
+  <div class="wrap">
+    <h2 class="rv">One mission, <span class="accent">three fronts.</span></h2>
+    <p class="sub rv">Harm arrives from many directions — trespass on the land, fraud on the ledger, theft in the feed. The Legion meets it on every front.</p>
+    <div class="grid3">
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+        <h3>Report</h3>
+        <p>A structured incident-reporting portal for crimes and financial crimes affecting American Indians — trespass, discrimination, cyber and social-media crimes, Indigenous intellectual-property misuse, and Indian Arts and Crafts Act violations. Every report is documented, categorized, and — with your consent — routed toward the right authorities.</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="M9.5 12l2 2 3.5-4"/></svg></div>
+        <h3>Defend</h3>
+        <p>Defensive cybersecurity services for tribal organizations and Native-owned businesses that cannot staff a full security team — vulnerability assessments, security-awareness training, and incident-response readiness. White-hat only: every engagement is authorized, scoped, and documented.</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 21l5-2.5L17 21l-1.5-7.5"/></svg></div>
+        <h3>Protect</h3>
+        <p>Guardianship of what makes a community whole — land, art, traditional knowledge, publications, historical materials, digital infrastructure, and emerging holdings from cryptocurrency to NFTs. Eleven asset classes, one standard of care.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ASSETS ================= -->
+<section class="alt" id="assets">
+  <div class="wrap">
+    <h2 class="rv">What we <span class="accent">help protect.</span></h2>
+    <p class="sub rv">Eleven asset classes under the Legion's watch — from ancestral land to digital holdings.</p>
+    <div class="chips rv">
+      <span class="chip">Land Assets</span>
+      <span class="chip">Intellectual Property (IP)</span>
+      <span class="chip">Art Assets</span>
+      <span class="chip">Educational Materials</span>
+      <span class="chip">Cryptocurrency Holdings</span>
+      <span class="chip">Blockchain Technology</span>
+      <span class="chip">NFTs</span>
+      <span class="chip">Books &amp; Publications</span>
+      <span class="chip">Historical Information &amp; Materials</span>
+      <span class="chip">Digital Infrastructure</span>
+      <span class="chip">Merchandise &amp; Physical Goods</span>
+    </div>
+  </div>
+</section>
+
+<!-- ================= REPORT PORTAL ================= -->
+<section id="report">
+  <div class="wrap">
+    <p class="eyebrow rv">Incident-Reporting Portal</p>
+    <h2 class="rv">Report an <span class="accent">incident.</span></h2>
+    <p class="sub rv">Document what happened below. Your report is compiled on your own device — nothing is transmitted until you choose to send it. You may report anonymously. If you are in immediate danger, call 911 or your local tribal law enforcement first.</p>
+    <div class="portal">
+      <div class="form-card rv">
+        <h3>Incident intake form</h3>
+        <p class="hint">Fields marked * are required. All other fields are optional.</p>
+        <form id="incident-form" novalidate>
+          <label class="flabel" for="f-category">Incident category *</label>
+          <select id="f-category" required>
+            <option value="">Select a category…</option>
+            <option>Trespass / unauthorized entry on tribal lands</option>
+            <option>Discrimination, racism, or defamation</option>
+            <option>Cyber crime / social-media crime (harassment, fraud, exploitation)</option>
+            <option>Misuse of Indigenous IP / traditional knowledge</option>
+            <option>Indian Arts and Crafts Act violation (false “Indian-made” claims)</option>
+            <option>Financial fraud / scam / embezzlement</option>
+            <option>Other civil wrong</option>
+          </select>
+          <p class="field-err" id="e-category">Please choose a category.</p>
+
+          <label class="flabel" for="f-asset">Affected asset (optional)</label>
+          <select id="f-asset">
+            <option value="">Select an asset class…</option>
+            <option>Land Assets</option><option>Intellectual Property (IP)</option>
+            <option>Art Assets</option><option>Educational Materials</option>
+            <option>Cryptocurrency Holdings</option><option>Blockchain Technology</option>
+            <option>NFTs</option><option>Books &amp; Publications</option>
+            <option>Historical Information &amp; Materials</option>
+            <option>Digital Infrastructure</option><option>Merchandise &amp; Physical Goods</option>
+          </select>
+
+          <div class="grid2" style="gap:16px">
+            <div>
+              <label class="flabel" for="f-date">Date of incident</label>
+              <input type="date" id="f-date">
+            </div>
+            <div>
+              <label class="flabel" for="f-location">Location</label>
+              <input type="text" id="f-location" placeholder="City, reservation, or online platform">
+            </div>
+          </div>
+
+          <label class="flabel" for="f-desc">What happened *</label>
+          <textarea id="f-desc" placeholder="Describe the incident in your own words: who, what, where, when. Include any evidence you preserved (screenshots, URLs, dates, amounts, names)." required></textarea>
+          <p class="field-err" id="e-desc">Please describe the incident.</p>
+
+          <label class="check"><input type="checkbox" id="f-anon"> <span><b style="color:var(--bone)">Report anonymously.</b> Your name and contact details will be omitted from the compiled report.</span></label>
+
+          <div id="contact-block">
+            <label class="flabel" for="f-name">Your name (optional)</label>
+            <input type="text" id="f-name" autocomplete="name">
+            <div class="grid2" style="gap:16px">
+              <div>
+                <label class="flabel" for="f-email">Email (optional)</label>
+                <input type="email" id="f-email" autocomplete="email" placeholder="you@example.com">
+              </div>
+              <div>
+                <label class="flabel" for="f-phone">Phone (optional)</label>
+                <input type="tel" id="f-phone" autocomplete="tel" placeholder="(___) ___-____">
+              </div>
+            </div>
+          </div>
+
+          <label class="flabel">Consent *</label>
+          <label class="check"><input type="checkbox" id="f-consent-review" checked> <span>I consent to the Legion reviewing this report for documentation and triage purposes.</span></label>
+          <label class="check"><input type="checkbox" id="f-consent-refer"> <span>I consent to this report being referred to the appropriate authorities (e.g., IACB for arts &amp; crafts violations, or federal tip lines) where applicable.</span></label>
+          <p class="field-err" id="e-consent">Review consent is required to compile the report.</p>
+
+          <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
+            <button type="submit" class="btn btn-gold">Compile Incident Report</button>
+            <button type="reset" class="btn btn-ghost" id="form-reset">Clear form</button>
+          </div>
+        </form>
+        <div class="report-out" id="report-out" aria-live="polite">
+          <h4>Your compiled report <span id="report-id" style="color:var(--bronze);font-size:15px"></span></h4>
+          <p style="font-size:13.5px;color:var(--muted)">Review it below. Nothing has been sent anywhere — copy it for your records, or send it to the Legion by email.</p>
+          <pre id="report-text"></pre>
+          <div class="row">
+            <button class="btn btn-gold btn-sm" id="copy-report">Copy report</button>
+            <a class="btn btn-ghost btn-sm" id="email-report" href="#">Send via email</a>
+          </div>
+        </div>
+      </div>
+      <div class="side-stack">
+        <div class="card rv">
+          <h3>What happens next</h3>
+          <ol class="steps" style="margin-top:18px">
+            <li><b>You document.</b> The form compiles a structured, timestamped report on your device.</li>
+            <li><b>You choose where it goes.</b> Send it to the Legion, file directly with a federal channel below, or both.</li>
+            <li><b>We triage.</b> With your consent, the Legion reviews, categorizes, and preserves the report for pattern documentation.</li>
+            <li><b>Referral with consent.</b> Where appropriate, reports are referred to authorities such as the IACB or federal tip lines — never without your permission.</li>
+          </ol>
+        </div>
+        <div class="card rv">
+          <div class="icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 8-6-16-3 8H2"/></svg></div>
+          <h3>Immediate danger?</h3>
+          <p>Do not use this form for emergencies. Call <b style="color:var(--bone)">911</b> or your tribal police department immediately. For threats in progress, contact the FBI at <b style="color:var(--bone)">1-800-CALL-FBI</b>.</p>
+        </div>
+        <div class="card rv">
+          <h3>Prefer official channels?</h3>
+          <p>File directly with the agencies below — the <a href="#resources">Resources</a> section lists every federal reporting channel with verified contact details.</p>
+          <div style="margin-top:14px"><a href="#resources" class="btn btn-ghost btn-sm">View reporting channels</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ================= SERVICES ================= -->
+<section class="alt" id="services">
+  <div class="wrap">
+    <p class="eyebrow rv">Service Packaging</p>
+    <h2 class="rv">Defensive services, <span class="accent">plainly packaged.</span></h2>
+    <p class="sub rv">Every engagement is authorized in writing, scoped in advance, and documented on delivery. The Legion operates white-hat only — we test systems we are engaged to test, and we describe defenses, never attacks.</p>
+    <div class="grid3">
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
+        <h3>Incident Intake &amp; Documentation</h3>
+        <p>Structured intake, categorization, and preservation of incident reports affecting American Indian individuals, businesses, and tribal organizations — building the documented record that advocacy and legal efforts require.</p>
+        <p class="deliv">Deliverable: timestamped case file · category &amp; asset tagging · referral memo (with consent)</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Cybersecurity Assessments</h3>
+        <p>Vulnerability assessments for tribal governments, Native-owned businesses, and community organizations that cannot staff a full security team. Scoped, time-boxed, and reported in plain language with prioritized remediation.</p>
+        <p class="deliv">Deliverable: scoped assessment · ranked findings · remediation roadmap</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Security Awareness Training</h3>
+        <p>Practical training for staff and community members: recognizing phishing and scams targeting Native communities, safe social-media practice, and what to preserve when an incident occurs — so reporting is fast and clean.</p>
+        <p class="deliv">Deliverable: live or recorded sessions · take-home checklists · incident-response cards</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8.5-7 10-4-1.5-7-5-7-10V6z"/><path d="M12 8v4M12 15h.01"/></svg></div>
+        <h3>Indigenous IP &amp; Traditional Knowledge Protection</h3>
+        <p>Guidance on documenting, asserting, and defending Indigenous intellectual property and traditional knowledge — from cultural designs to publications and historical materials — and on responding when it is misappropriated.</p>
+        <p class="deliv">Deliverable: IP inventory framework · documentation guidance · misuse response playbook</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <h3>Arts &amp; Crafts Violation Support</h3>
+        <p>Support for artists and sellers facing false “Indian-made” competition: documenting the violation, preparing IACB complaints under the Indian Arts and Crafts Act, and preserving the evidence chain.</p>
+        <p class="deliv">Deliverable: evidence checklist · IACB complaint draft · preservation guidance</p>
+      </div>
+      <div class="card rv">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3>Incident-Response Readiness</h3>
+        <p>Before anything goes wrong: who to call, what to preserve, and in what order. A readiness plan tailored to small tribal organizations — so the first hour of an incident is handled, not improvised.</p>
+        <p class="deliv">Deliverable: response plan · escalation contacts · tabletop walkthrough</p>
+      </div>
+    </div>
+    <div class="rv" style="margin-top:36px;text-align:center">
+      <a class="btn btn-gold" href="mailto:services@djbey.com?subject=Service%20engagement%20inquiry%20—%20American%20Indian%20Defense%20Legion">Request an engagement</a>
+      <p style="margin-top:14px;font-size:13.5px;color:var(--muted)">All services pending final legal review. The Legion is not a law firm and does not provide legal advice.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESOURCES ================= -->
+<section id="resources">
+  <div class="wrap">
+    <p class="eyebrow rv">Resources</p>
+    <h2 class="rv">Federal reporting <span class="accent">channels.</span></h2>
+    <p class="sub rv">Where to file directly with federal authorities. Jurisdiction in Indian Country is complex — start with the federal channels below plus your tribal police or court if the incident occurred on tribal land. Preserve everything: screenshots, URLs, dates, amounts, names, account information.</p>
+    <div class="table-wrap rv">
+      <table class="chan">
+        <thead><tr><th>Agency</th><th>What to report</th><th>How to file</th></tr></thead>
+        <tbody>
+          <tr>
+            <td>FTC<span class="verified">verified</span></td>
+            <td>Consumer scams and fraud targeting Native communities</td>
+            <td><a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">ReportFraud.ftc.gov</a> · Resource: “Native American Communities: Spot, Avoid, and Report Scams”</td>
+          </tr>
+          <tr>
+            <td>FBI IC3<span class="verified">verified</span></td>
+            <td>Internet-enabled financial fraud, phishing, investment and romance scams, social-media crimes</td>
+            <td><a href="https://www.ic3.gov" target="_blank" rel="noopener">ic3.gov</a></td>
+          </tr>
+          <tr>
+            <td>FBI<span class="verified">verified</span></td>
+            <td>General tips including financial crime; serious threats and stalking</td>
+            <td><a href="https://tips.fbi.gov" target="_blank" rel="noopener">tips.fbi.gov</a> · <b style="color:var(--bone)">1-800-CALL-FBI</b></td>
+          </tr>
+          <tr>
+            <td>IACB<span class="verified">verified</span></td>
+            <td>Indian Arts and Crafts Act violations — false “Indian-made” marketing</td>
+            <td>Online violation report form at <a href="https://www.doi.gov/iacb" target="_blank" rel="noopener">doi.gov/iacb</a> · <b style="color:var(--bone)">1-888-278-3253</b></td>
+          </tr>
+          <tr>
+            <td>IRS</td>
+            <td>Abusive tax schemes and promoters targeting tribes</td>
+            <td><a href="https://www.irs.gov" target="_blank" rel="noopener">IRS.gov/SubmitATip</a></td>
+          </tr>
+          <tr>
+            <td>BIA Office of Justice Services</td>
+            <td>Tips on crimes in Indian Country, including cyber and technology-facilitated crime</td>
+            <td><b style="color:var(--bone)">1-833-560-2065</b> (BIA tip line; specific unit attribution unconfirmed)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="rv" style="margin-top:18px;font-size:13.5px;color:var(--muted)">“Verified” marks contact details confirmed against official sources on 2026-10-05. Unmarked entries are presented as published by the agencies; confirm current details on the agency’s official site before filing.</p>
+
+    <h2 class="rv" style="margin-top:70px">Defensive <span class="accent">knowledge.</span></h2>
+    <p class="sub rv">Concept-level education — the Legion describes defenses, never attacks. Nothing here instructs wrongdoing.</p>
+    <details class="acc rv">
+      <summary>What ethical hacking is</summary>
+      <div class="body">
+        <p>The authorized testing of systems, networks, and applications to find vulnerabilities before malicious actors do. The entire discipline rests on one pillar: <b style="color:var(--bone)">explicit, documented authorization</b>. Without it, the same act is a crime.</p>
+        <ul>
+          <li><b style="color:var(--bone)">White hat</b> — works with authorization: penetration testers, security researchers, red teams. The Legion’s posture: white hat only.</li>
+          <li><b style="color:var(--bone)">Penetration testing</b> — scoped, time-boxed simulated attacks against agreed targets.</li>
+          <li><b style="color:var(--bone)">Vulnerability assessment</b> — systematic discovery and ranking of weaknesses.</li>
+          <li><b style="color:var(--bone)">Red teaming</b> — full-scope adversary simulation, including consented social engineering.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="acc rv">
+      <summary>Defensive fundamentals for small organizations</summary>
+      <div class="body">
+        <ul>
+          <li><b style="color:var(--bone)">OPSEC</b> — control what information leaves the organization and how.</li>
+          <li><b style="color:var(--bone)">Least privilege</b> — most data theft involves someone with legitimate access; limit access to what each role needs.</li>
+          <li><b style="color:var(--bone)">Supply-chain caution</b> — vendors and software providers are attack paths; vet them.</li>
+          <li><b style="color:var(--bone)">Incident-response readiness</b> — know who to call and what to preserve before an incident, so reporting is fast and clean.</li>
+        </ul>
+      </div>
+    </details>
+    <details class="acc rv">
+      <summary>Counter-espionage awareness (defensive perspective)</summary>
+      <div class="body">
+        <p>Understanding how espionage works so you can defend against it — not participate in it. Relevant forms include quiet cyber intrusion aimed at stealing data, theft of trade secrets through insiders or compromised vendors, and misappropriation of traditional knowledge and cultural designs. Defense is policy, access control, and vigilance — never retaliation.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section class="alt" id="about">
+  <div class="wrap">
+    <p class="eyebrow rv">About the Legion</p>
+    <h2 class="rv">Why the Legion <span class="accent">exists.</span></h2>
+    <p class="sub rv" style="font-size:18px">Crimes against American Indian communities — on the land, on the ledger, and in the feed — are under-documented and under-defended. Scams target Native communities. “Indian-made” fraud undercuts Native artists. Cyber harassment and exploitation cross into Indian Country with too little recourse. Tribal organizations face the same cyber threats as any enterprise, usually without a security team. The American Indian Defense Legion was founded to close that gap: a cybersecurity company that receives the reports, documents the patterns, defends the organizations, and protects the assets — from land to art to digital holdings.</p>
+    <div class="principles">
+      <div class="principle rv"><b>Defense only</b><span>We find weaknesses and document harm. We do not attack, retaliate, or operate outside authorization.</span></div>
+      <div class="principle rv"><b>Authorization first</b><span>Every assessment is scoped in writing before it begins. No engagement, no testing.</span></div>
+      <div class="principle rv"><b>Consent-driven reporting</b><span>Reports are referred to authorities only with the reporter’s explicit consent.</span></div>
+      <div class="principle rv"><b>Data sovereignty respected</b><span>Tribal control of tribal data — privacy, anonymity options, and clear retention practices.</span></div>
+    </div>
+    <div class="rv" style="margin-top:44px">
+      <h3 style="font-family:var(--serif);font-size:20px;margin-bottom:12px">Related independent organizations</h3>
+      <p style="color:var(--muted);font-size:15px;max-width:70ch">The Legion operates independently. These organizations do related work in Indian Country and are listed as public resources, not as partners or endorsers: <a href="https://www.narf.org" target="_blank" rel="noopener">Native American Rights Fund (NARF)</a> · <a href="https://www.ncai.org" target="_blank" rel="noopener">National Congress of American Indians (NCAI)</a> · <a href="https://www.doi.gov/iacb" target="_blank" rel="noopener">Indian Arts and Crafts Board (IACB)</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap contact-band">
+    <p class="eyebrow rv">Contact</p>
+    <h2 class="rv">Stand with the <span class="accent">Legion.</span></h2>
+    <p class="sub rv" style="margin-left:auto;margin-right:auto;text-align:center">To report an incident, use the portal above. For service engagements, partnerships, or press, reach out directly.</p>
+    <div class="rv" style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+      <a class="btn btn-gold" href="mailto:services@djbey.com?subject=American%20Indian%20Defense%20Legion%20—%20inquiry">services@djbey.com</a>
+      <a class="btn btn-ghost" href="#report">Report an incident</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>American Indian Defense Legion</h5>
+        <p style="max-width:36ch">Cybersecurity and incident reporting for American Indian communities. Defense-first, authorization-first, consent-driven.</p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <a href="#home">Home</a><a href="#report">Report an Incident</a><a href="#services">Services</a><a href="#resources">Resources</a><a href="#about">About</a>
+      </div>
+      <div>
+        <h5>File directly</h5>
+        <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">FTC — ReportFraud.ftc.gov</a>
+        <a href="https://www.ic3.gov" target="_blank" rel="noopener">FBI IC3 — ic3.gov</a>
+        <a href="https://tips.fbi.gov" target="_blank" rel="noopener">FBI Tips — tips.fbi.gov</a>
+        <a href="https://www.doi.gov/iacb" target="_blank" rel="noopener">IACB — doi.gov/iacb</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p><b style="color:var(--bone)">Not a law firm.</b> The American Indian Defense Legion is a cybersecurity and incident-reporting company. Nothing on this site constitutes legal advice. Site content is pending final legal review; consult qualified counsel — including tribal-law counsel for matters on tribal lands — before acting on any information here. In an emergency, call 911.</p>
+      <p style="margin-top:10px">© 2026 American Indian Defense Legion. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  /* header shadow + mobile menu */
+  var header=document.getElementById('site-header');
+  addEventListener('scroll',function(){header.classList.toggle('scrolled',scrollY>10)},{passive:true});
+  var toggle=document.getElementById('menu-toggle'),links=document.getElementById('nav-links');
+  toggle.addEventListener('click',function(){links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open')})});
+  /* reveal on scroll */
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+  /* anonymous toggle */
+  var anon=document.getElementById('f-anon'),contact=document.getElementById('contact-block');
+  anon.addEventListener('change',function(){
+    contact.style.opacity=anon.checked?'0.35':'1';
+    contact.querySelectorAll('input').forEach(function(i){i.disabled=anon.checked;if(anon.checked)i.value=''});
+  });
+  /* form reset */
+  document.getElementById('form-reset').addEventListener('click',function(){
+    document.getElementById('report-out').classList.remove('show');
+    contact.style.opacity='1';contact.querySelectorAll('input').forEach(function(i){i.disabled=false});
+  });
+  /* incident report compiler */
+  var form=document.getElementById('incident-form');
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var ok=true;
+    function req(id,eid,cond){var bad=!cond;document.getElementById(eid).style.display=bad?'block':'none';if(bad)ok=false;}
+    var cat=document.getElementById('f-category').value,
+        desc=document.getElementById('f-desc').value.trim(),
+        consent=document.getElementById('f-consent-review').checked;
+    req(0,'e-category',cat!=='');req(0,'e-desc',desc.length>3);req(0,'e-consent',consent);
+    if(!ok)return;
+    var rid='AIDL-'+new Date().toISOString().slice(0,10).replace(/-/g,'')+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+    var L=[];
+    L.push('AMERICAN INDIAN DEFENSE LEGION — INCIDENT REPORT');
+    L.push('Reference: '+rid);
+    L.push('Compiled: '+new Date().toLocaleString());
+    L.push('----------------------------------------');
+    L.push('Category: '+cat);
+    var asset=document.getElementById('f-asset').value;if(asset)L.push('Affected asset: '+asset);
+    var d=document.getElementById('f-date').value;if(d)L.push('Date of incident: '+d);
+    var loc=document.getElementById('f-location').value.trim();if(loc)L.push('Location: '+loc);
+    L.push('----------------------------------------');
+    L.push('DESCRIPTION:');L.push(desc);
+    L.push('----------------------------------------');
+    if(anon.checked){L.push('Reporter: ANONYMOUS');}
+    else{
+      var nm=document.getElementById('f-name').value.trim(),
+          em=document.getElementById('f-email').value.trim(),
+          ph=document.getElementById('f-phone').value.trim();
+      L.push('Reporter: '+(nm||'(name withheld)')+(em?' <'+em+'>':'')+(ph?' · '+ph:''));
+    }
+    L.push('Consent — Legion review: YES');
+    L.push('Consent — referral to authorities: '+(document.getElementById('f-consent-refer').checked?'YES':'NO'));
+    L.push('----------------------------------------');
+    L.push('Compiled locally on reporter device. Not yet transmitted.');
+    var text=L.join('\n');
+    document.getElementById('report-id').textContent='· '+rid;
+    document.getElementById('report-text').textContent=text;
+    document.getElementById('email-report').href='mailto:services@djbey.com?subject='+encodeURIComponent('Incident report '+rid+' — American Indian Defense Legion')+'&body='+encodeURIComponent(text);
+    var out=document.getElementById('report-out');out.classList.add('show');
+    out.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+  document.getElementById('copy-report').addEventListener('click',function(){
+    var t=document.getElementById('report-text').textContent;
+    function done(btn,msg){var o=btn.textContent;btn.textContent=msg;setTimeout(function(){btn.textContent=o},1800);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){done(this,'Copied ✓')}.bind(this),function(){fallback()});
+    }else fallback();
+    function fallback(){
+      var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');done(document.getElementById('copy-report'),'Copied ✓');}
+      catch(e){done(document.getElementById('copy-report'),'Copy failed — select manually');}
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
+</body>
+</html>
