@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tribal Genealogy &amp; Rolls Research — American Indian Defense Legion</title>
+<meta name="description" content="The American Indian Defense Legion's genealogy service: family trees and ancestral research for tribal peoples, built from the Dawes rolls, Indian census rolls, BIA agency records, and Indian school records — source-cited, and private by default.">
+<style>
+  :root{
+    --black:#0A0A0B; --panel:#131315; --panel2:#1A1A1D;
+    --gold:#C9A227; --gold-deep:#9A7B1C; --bronze:#B08D57;
+    --bone:#F5F1E6; --muted:#A9A49A; --line:rgba(201,162,39,.22);
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--black);color:var(--bone);font-family:var(--sans);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--gold);color:#0A0A0B}
+  a{color:var(--gold)}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:50;background:rgba(10,10,11,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:box-shadow .25s}
+  header.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.5)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--bone)}
+  .brand svg{width:40px;height:40px;flex:none}
+  .brand .wordmark{font-family:var(--serif);font-size:17px;letter-spacing:.4px;line-height:1.2}
+  .brand .wordmark small{display:block;font-family:var(--sans);font-size:10.5px;letter-spacing:2.5px;color:var(--gold);text-transform:uppercase}
+  nav.links{display:flex;gap:28px;align-items:center}
+  nav.links a{color:var(--bone);text-decoration:none;font-size:14.5px;letter-spacing:.4px;opacity:.85;transition:.2s}
+  nav.links a:hover{color:var(--gold);opacity:1}
+  .btn{display:inline-block;font-family:var(--sans);font-weight:600;font-size:15px;letter-spacing:.3px;padding:13px 26px;border-radius:8px;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:.2s}
+  .btn-gold{background:var(--gold);color:#0A0A0B}
+  .btn-gold:hover{background:#DBB73A;transform:translateY(-1px)}
+  .btn-ghost{border-color:var(--line);color:var(--bone)}
+  .btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+  .btn-sm{padding:10px 18px;font-size:13.5px}
+  .menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:8px;color:var(--bone);padding:9px 13px;font-size:16px;cursor:pointer}
+  /* ---------- hero ---------- */
+  .hero{position:relative;overflow:hidden;padding:110px 0 90px;border-bottom:1px solid var(--line)}
+  .hero .shield-bg{position:absolute;right:-120px;top:-60px;width:560px;opacity:.07;pointer-events:none}
+  .eyebrow{color:var(--gold);text-transform:uppercase;letter-spacing:3.5px;font-size:12.5px;font-weight:600;margin-bottom:18px}
+  h1{font-family:var(--serif);font-size:clamp(40px,6vw,68px);line-height:1.08;font-weight:600;max-width:16ch}
+  h1 .accent{color:var(--gold)}
+  .lede{font-size:19px;color:var(--muted);max-width:62ch;margin:22px 0 34px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{margin-top:44px;display:flex;gap:36px;flex-wrap:wrap}
+  .hero-meta div b{display:block;font-family:var(--serif);font-size:26px;color:var(--gold)}
+  .hero-meta div span{font-size:13px;color:var(--muted);letter-spacing:.5px}
+  /* ---------- sections ---------- */
+  section{padding:84px 0}
+  section.alt{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  h2{font-family:var(--serif);font-size:clamp(30px,4vw,44px);margin-bottom:14px;line-height:1.15}
+  h2 .accent{color:var(--gold)}
+  .sub{color:var(--muted);max-width:70ch;margin-bottom:44px;font-size:17px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:14px;padding:32px;transition:.25s}
+  .card:hover{border-color:var(--gold);transform:translateY(-3px)}
+  .card .icon{width:46px;height:46px;border-radius:11px;background:rgba(201,162,39,.12);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .card .icon svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.8}
+  .card h3{font-family:var(--serif);font-size:21px;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15.5px}
+  .card .deliv{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line);font-size:13.5px;color:var(--bronze)}
+  /* ---------- asset chips ---------- */
+  .chips{display:flex;flex-wrap:wrap;gap:12px}
+  .chip{border:1px solid var(--line);border-radius:999px;padding:10px 20px;font-size:14px;color:var(--bone);background:rgba(201,162,39,.06)}
+  .chip:hover{border-color:var(--gold)}
+  /* ---------- report portal ---------- */
+  .portal{display:grid;grid-template-columns:1.15fr .85fr;gap:26px;align-items:start}
+  .form-card{background:var(--panel2);border:1px solid var(--line);border-radius:16px;padding:36px}
+  .form-card h3{font-family:var(--serif);font-size:24px;margin-bottom:6px}
+  .form-card .hint{color:var(--muted);font-size:14px;margin-bottom:26px}
+  label.flabel{display:block;font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin:20px 0 8px;font-weight:600}
+  input[type=text],input[type=email],input[type=tel],input[type=date],select,textarea{width:100%;background:#0E0E10;border:1px solid var(--line);border-radius:9px;color:var(--bone);padding:13px 15px;font-size:15.5px;font-family:var(--sans);transition:.2s}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.15)}
+  textarea{min-height:130px;resize:vertical}
+  .check{display:flex;gap:12px;align-items:flex-start;margin:12px 0;font-size:14.5px;color:var(--muted)}
+  .check input{width:18px;height:18px;margin-top:3px;accent-color:var(--gold);flex:none}
+  .side-stack{display:flex;flex-direction:column;gap:22px}
+  .steps{list-style:none;counter-reset:step}
+  .steps li{position:relative;padding:0 0 26px 52px;color:var(--muted);font-size:15px}
+  .steps li:last-child{padding-bottom:0}
+  .steps li::before{counter-increment:step;content:counter(step);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:16px}
+  .steps li b{color:var(--bone);display:block;font-size:15.5px;margin-bottom:2px}
+  .report-out{display:none;margin-top:26px;border:1px solid var(--gold);border-radius:12px;padding:24px;background:rgba(201,162,39,.05)}
+  .report-out.show{display:block}
+  .report-out h4{font-family:var(--serif);color:var(--gold);font-size:19px;margin-bottom:10px}
+  .report-out pre{white-space:pre-wrap;font-size:13.5px;color:var(--bone);background:#0C0C0D;border:1px solid var(--line);border-radius:8px;padding:16px;max-height:320px;overflow:auto;margin:12px 0}
+  .report-out .row{display:flex;gap:10px;flex-wrap:wrap}
+  .field-err{color:#E0685C;font-size:13px;margin-top:6px;display:none}
+  /* ---------- channels table ---------- */
+  .chan{width:100%;border-collapse:collapse;font-size:15px}
+  .chan th{text-align:left;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--gold);padding:14px 16px;border-bottom:1px solid var(--line)}
+  .chan td{padding:16px;border-bottom:1px solid rgba(201,162,39,.1);vertical-align:top;color:var(--muted)}
+  .chan td:first-child{color:var(--bone);font-weight:600;white-space:nowrap}
+  .chan tr:hover td{background:rgba(201,162,39,.04)}
+  .verified{display:inline-block;font-size:11px;letter-spacing:1px;color:#0A0A0B;background:var(--gold);border-radius:4px;padding:2px 8px;margin-left:8px;font-weight:700;vertical-align:middle}
+  .table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--panel2)}
+  /* ---------- accordions ---------- */
+  details.acc{border:1px solid var(--line);border-radius:12px;background:var(--panel2);margin-bottom:14px;overflow:hidden}
+  details.acc summary{cursor:pointer;padding:20px 24px;font-family:var(--serif);font-size:18px;list-style:none;display:flex;justify-content:space-between;align-items:center}
+  details.acc summary::-webkit-details-marker{display:none}
+  details.acc summary::after{content:"+";color:var(--gold);font-size:24px;font-family:var(--sans)}
+  details.acc[open] summary::after{content:"–"}
+  details.acc .body{padding:0 24px 24px;color:var(--muted);font-size:15.5px}
+  details.acc .body ul{margin:10px 0 0 20px}
+  details.acc .body li{margin-bottom:8px}
+  /* ---------- about / contact ---------- */
+  .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:34px}
+  .principle{border-left:2px solid var(--gold);padding:6px 0 6px 20px}
+  .principle b{display:block;font-size:16px;margin-bottom:4px}
+  .principle span{color:var(--muted);font-size:14.5px}
+  .contact-band{text-align:center;padding:70px 0}
+  .contact-band h2{margin-bottom:12px}
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);padding:52px 0 40px;color:var(--muted);font-size:13.5px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px;margin-bottom:36px}
+  .foot-grid h5{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px}
+  .foot-grid a{color:var(--muted);text-decoration:none;display:block;margin-bottom:8px}
+  .foot-grid a:hover{color:var(--gold)}
+  .disclaimer{border-top:1px solid var(--line);padding-top:26px;font-size:12.5px;line-height:1.7;color:#7E7A70}
+  /* ---------- reveal ---------- */
+  .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  /* ---------- responsive ---------- */
+  @media(max-width:900px){
+    .grid3,.grid2,.portal,.principles,.foot-grid{grid-template-columns:1fr}
+    nav.links{display:none;position:absolute;top:72px;left:0;right:0;background:#0E0E10;flex-direction:column;padding:20px 24px 28px;gap:18px;border-bottom:1px solid var(--line);align-items:flex-start}
+    nav.links.open{display:flex}
+    .menu-toggle{display:block}
+    .hero{padding:70px 0 60px}
+    section{padding:60px 0}
+  }
+
+  @media(max-width:900px){nav.links a.btn{margin-top:6px}}
+</style>
+</head>
+<body>
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="American Indian Defense Legion — home">
+      <svg viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M24 3 41 10v13c0 10.5-7.2 18.4-17 22C14.2 41.4 7 33.5 7 23V10L24 3z" fill="none" stroke="#C9A227" stroke-width="2.6"/>
+        <path d="M24 12l2.6 5.6 6 .7-4.4 4.1 1.1 5.9-5.3-3-5.3 3 1.1-5.9-4.4-4.1 6-.7L24 12z" fill="#C9A227"/>
+        <path d="M14 34.5h20" stroke="#C9A227" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+      </svg>
+      <span class="wordmark">American Indian Defense Legion<small>Cybersecurity &amp; Incident Reporting</small></span>
+    </a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Open menu">☰</button>
+    <nav class="links" id="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="index.html#report">Report an Incident</a>
+      <a href="index.html#services">Services</a>
+      <a href="genealogy.html">Genealogy</a>
+      <a href="index.html#resources">Resources</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#report" class="btn btn-gold btn-sm">Report an Incident</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home" style="border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <p class="eyebrow rv">Protect — Historical Information &amp; Materials</p>
+    <h1 class="rv">The record of a people, <span class="accent">defended like the people.</span></h1>
+    <p class="lede rv">The Legion's genealogy service builds family trees and ancestral research for tribal peoples from the public record of the United States — the rolls, the censuses, the agency files, and the school records. Every finding is cited to its source. Every living person is private by default.</p>
+    <div class="hero-cta rv">
+      <a class="btn btn-gold" href="mailto:services@djbey.com?subject=Genealogy%20research%20inquiry%20—%20American%20Indian%20Defense%20Legion">Request genealogy research</a>
+      <a class="btn btn-ghost" href="#records">See the record sets</a>
+    </div>
+    <div class="hero-meta rv">
+      <div><b>4</b><span>archival collections searched</span></div>
+      <div><b>100%</b><span>of findings source-cited</span></div>
+      <div><b>Private</b><span>living persons, by default</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE PORTAL ================= -->
+<section id="portal">
+  <div class="wrap">
+    <h2 class="rv">One portal, <span class="accent">kept under guard.</span></h2>
+    <p class="sub rv">The Legion operates a genealogy portal for this work: your family's record in one place, built only from historical public records, and never published by us. It starts from what you know and grows only by what the archives can prove.</p>
+    <div class="grid3">
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2.4"/><circle cx="5.5" cy="19" r="2.4"/><circle cx="18.5" cy="19" r="2.4"/><path d="M12 7.4v4M12 11.4 6.6 16.8M12 11.4l5.4 5.4"/></svg></div><h3>Family Trees</h3><p>Private-by-default trees with parent and spouse relationships, built person by person from documented records — never from guesswork or other families' trees.</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c.8-3.4 3.4-5 7-5s6.2 1.6 7 5"/></svg></div><h3>Person Profiles</h3><p>An editable profile for every ancestor: names, dates, places, relationships, and the notes and citations that stand behind each fact.</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M5 4h14M5 9.5h14M5 15h9M5 20h9"/></svg></div><h3>People Index</h3><p>Every person in your research, indexed and searchable, so a name found in one record can be followed into every other record that carries it.</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6"/><path d="M15.3 15.3 21 21"/></svg></div><h3>Archival Search</h3><p>On-demand searching of the federal archives — archives.gov, loc.gov, and bia.gov — shaped by the four collections below, on the question you are actually asking.</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M7 3.5h10V20l-5-3.4L7 20z"/></svg></div><h3>Source Leads</h3><p>Promising records are saved as leads and kept, so research resumes where it stopped instead of starting over — and dead ends stay marked as dead ends.</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M5 4.5A1.5 1.5 0 0 1 6.5 3H19v15H6.7A1.7 1.7 0 0 0 5 19.7z"/><path d="M5 18.5V4.5M19 18H8"/></svg></div><h3>Roll-Research Guides</h3><p>Standing guides to the National Archives' Native American records: the Final Rolls, the Guion Miller index, the Kern-Clifton and Wallace Rolls, the Eastern Cherokee census rolls of 1835–1884, and the regional BIA finding aids.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= THE RECORD SETS ================= -->
+<section class="alt" id="records">
+  <div class="wrap">
+    <h2 class="rv">The record sets <span class="accent">we work.</span></h2>
+    <p class="sub rv">Four collections carry most of what survives on paper. The portal searches them as one body of evidence, because a single life usually appears in several of them at once.</p>
+    <div class="grid2">
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M6 3.5h13v17H6z"/><path d="M9 8h7M9 12h7M9 16h4.5"/></svg></div><h3>Dawes Rolls &amp; Enrollment Records</h3><p>The Final Rolls of the Five Civilized Tribes and the enrollment records around them: applications, census cards, and jackets — the first place most families are told to look, and the place that demands the most care in reading.</p><p class="deliv">Deliverable: roll citations · enrollment-card references · application-jacket leads</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4.5 5.5h15M4.5 10h15M4.5 14.5h15M4.5 19h9"/><circle cx="19" cy="19" r=".6"/></svg></div><h3>Indian Census Rolls</h3><p>The annual Indian census rolls taken by agency, year after year — households, ages, relationships, and allotments recorded in sequence, so a family can be followed across decades rather than found once.</p><p class="deliv">Deliverable: household sequences · year-by-year residence trail</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V9.5L12 4l8 5.5V20"/><path d="M9.5 20v-5.5h5V20"/></svg></div><h3>BIA Agency Records</h3><p>The Bureau of Indian Affairs' agency files: correspondence, heirship and probate material, allotment records, and the regional finding aids that show what an agency kept and where it rests now.</p><p class="deliv">Deliverable: agency-file leads · finding-aid references · probate trails</p></div>
+      <div class="card rv"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 4 2.5 9 12 14l9.5-5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></div><h3>Indian School Records</h3><p>Student files from the boarding-school era and the day schools: enrollment cards, attendance, and correspondence home. Hard records to read, and often the only ones that name a child directly.</p><p class="deliv">Deliverable: student-file citations · school and year references</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW IT RUNS ================= -->
+<section id="how">
+  <div class="wrap">
+    <h2 class="rv">How the research <span class="accent">runs.</span></h2>
+    <p class="sub rv">Four steps, in order, every time. The discipline is the service: nothing enters a tree without a record beneath it.</p>
+    <div class="portal" style="grid-template-columns:1fr 1fr">
+      <div class="form-card rv">
+        <h3>The method</h3>
+        <p class="hint">From a family's first names to a documented line.</p>
+        <ol class="steps">
+          <li><b>Begin the tree.</b>We enter what your family already knows — names, dates, places — marked as family knowledge, not yet as fact.</li>
+          <li><b>Search the archives.</b>The four collections are searched on demand, person by person, against the official federal sources.</li>
+          <li><b>Cite every finding.</b>A fact joins the tree only with its record attached: collection, roll, page, and archive. Uncited claims stay out.</li>
+          <li><b>Keep the leads.</b>Records that almost fit are saved as leads with the reason they were kept, so the next session — or the next generation — starts ahead.</li>
+        </ol>
+      </div>
+      <div class="side-stack">
+        <div class="form-card rv">
+          <h3>The rules of the house</h3>
+          <p class="hint">These do not bend, for any client, at any price.</p>
+          <div class="principles" style="grid-template-columns:1fr;margin-top:6px">
+            <div class="principle"><b>Historical public records only</b><span>The portal is built on the archival record. Nothing is scraped from the living, and nothing is invented to fill a gap.</span></div>
+            <div class="principle"><b>Living persons private by default</b><span>The living appear in a tree only as relationships require, and their details are never the product.</span></div>
+            <div class="principle"><b>Sources cited, always</b><span>If a claim cannot be pointed to a record, it is labeled unverified or left out. A short tree that is true outranks a long one that is not.</span></div>
+            <div class="principle"><b>Citizenship is not ours to decide</b><span>The Legion documents lineage. It does not determine tribal enrollment or citizenship — those decisions belong to tribes alone, and no finding here should be represented as one.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="alt contact-band">
+  <div class="wrap">
+    <h2 class="rv">Begin with <span class="accent">one name.</span></h2>
+    <p class="sub rv" style="margin:0 auto 30px">Send the earliest ancestor your family is certain of — a name, an approximate year, a place — and the Legion will tell you plainly what the record is likely to hold before any engagement is set.</p>
+    <a class="btn btn-gold rv" href="mailto:services@djbey.com?subject=Genealogy%20research%20inquiry%20—%20American%20Indian%20Defense%20Legion">services@djbey.com</a>
+    <p class="rv" style="color:var(--muted);font-size:13.5px;margin-top:22px">All services pending final legal review. The Legion documents lineage; it does not determine tribal citizenship.</p>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>American Indian Defense Legion</h5>
+        <p style="max-width:36ch">Cybersecurity and incident reporting for American Indian communities. Defense-first, authorization-first, consent-driven.</p>
+      </div>
+      <div>
+        <h5>Site</h5>
+        <a href="index.html">Home</a><a href="index.html#report">Report an Incident</a><a href="index.html#services">Services</a><a href="genealogy.html">Genealogy</a><a href="index.html#resources">Resources</a><a href="index.html#about">About</a>
+      </div>
+      <div>
+        <h5>File directly</h5>
+        <a href="https://reportfraud.ftc.gov" target="_blank" rel="noopener">FTC — ReportFraud.ftc.gov</a>
+        <a href="https://www.ic3.gov" target="_blank" rel="noopener">FBI IC3 — ic3.gov</a>
+        <a href="https://tips.fbi.gov" target="_blank" rel="noopener">FBI Tips — tips.fbi.gov</a>
+        <a href="https://www.doi.gov/iacb" target="_blank" rel="noopener">IACB — doi.gov/iacb</a>
+      </div>
+    </div>
+    <div class="disclaimer">
+      <p><b style="color:var(--bone)">Not a law firm.</b> The American Indian Defense Legion is a cybersecurity and incident-reporting company. Nothing on this site constitutes legal advice. Site content is pending final legal review; consult qualified counsel — including tribal-law counsel for matters on tribal lands — before acting on any information here. In an emergency, call 911.</p>
+      <p style="margin-top:10px">© 2026 American Indian Defense Legion. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var header=document.getElementById('site-header');
+  addEventListener('scroll',function(){header.classList.toggle('scrolled',scrollY>10)},{passive:true});
+  var toggle=document.getElementById('menu-toggle'),links=document.getElementById('nav-links');
+  toggle.addEventListener('click',function(){links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open')})});
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+})();
+</script>
+</body>
+</html>
